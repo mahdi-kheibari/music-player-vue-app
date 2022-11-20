@@ -29,11 +29,15 @@
         color="info"
       ></v-app-bar-nav-icon>
       <div v-if="!$vuetify.breakpoint.mobile" class="d-flex align-center">
-        <nuxt-link to="/" class="py-1 pt-2 px-2 mx-2">
-            <logo></logo>
+        <nuxt-link to="/" class="py-1 pt-2 px-2 mx-3">
+          <logo></logo>
         </nuxt-link>
-        <nuxt-link to="/" class="info--text text-decoration-none pa-2">All songs</nuxt-link>
-        <nuxt-link to="/" class="info--text text-decoration-none pa-2">Favorite songs</nuxt-link>
+        <nuxt-link to="/" class="info--text text-decoration-none pa-2"
+          >All songs</nuxt-link
+        >
+        <nuxt-link to="/" class="info--text text-decoration-none pa-2"
+          >Favorite songs</nuxt-link
+        >
       </div>
     </v-app-bar>
   </div>
@@ -45,8 +49,8 @@ export default {
       drawer: false,
     }
   },
-  mounted(){
-    console.log(!this.$vuetify.breakpoint.mobile);
-  }
+  mounted() {
+    console.log(!this.$vuetify.breakpoint.mobile)
+  },
 }
 </script>

@@ -2,7 +2,7 @@
   <v-app>
     <app-header></app-header>
     <v-main>
-
+        <current-song></current-song>
     </v-main>
   </v-app>
 </template>

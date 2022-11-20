@@ -1,0 +1,14 @@
+.visualizer{
+    &_icon,&_icon2,&_icon3{
+        width: 0.5rem;
+        height: 0.6rem;
+        background-color:$color-primary;
+        margin: 0px 1px;
+    }
+    &_icon2{
+        height: 1rem;
+    }
+    &_icon3{
+        height: 0.8rem;
+    }
+}
