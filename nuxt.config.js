@@ -9,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - music-player-vue',
+    // titleTemplate: '%s - music-player-vue',
     title: 'music-player-vue',
     meta: [
       { charset: 'utf-8' },
@@ -21,7 +21,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/scss/theme.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -50,15 +50,15 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    // customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+    //   dark: true,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
+        light: {
+          primary: "#00c79f",
+          accent: colors.teal.accent3,
+          secondary: "#23354a",
+          info: "#cdcdcd",
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
