@@ -1,83 +1,58 @@
 .navbar {
     background-color: $color-primary !important;
+
     &-brand {
         font-size: 1.5rem !important;
     }
 }
 
 .currentSong {
-    width: 100%;
-    height: 35vh;
+    height: 40vh;
     background: linear-gradient(0deg, rgba(35, 53, 74, 0.7), rgba(35, 53, 74, 0.85)), url(../../static/img/Hope_cover.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0px 50%;
     background-attachment: fixed;
-
     position: relative;
     color: $color-primary !important;
 
     &_box {
-        background-color: $color-secondary !important;
-        width: 17%;
-        position: absolute;
-        top: 30%;
-        margin-left: 5%;
-
+        width: 85%;
+        margin-top: 15vh;
         &-img {
-            width: 90%;
-            margin-top: 5% !important;
-            box-shadow: 0px 0px 1rem $color-primary;
+            box-shadow: 0px 0px 1rem 0.16rem $color-primary;
+            position: relative;
         }
 
         &-icon {
             position: absolute;
-            top: 30%;
-            left: 35%;
+            top: 29%;
+            left: 39%;
             cursor: pointer;
-
             @media (max-width:1200) {
-                top: 20%;
-                left: 31%;
+                top: 31%;
             }
 
             @media (max-width:992px) {
-                top: 17%;
-                left: 27%;
+                top: 35%;
             }
-
-            @media (max-width:768px) {
-                top: 12%;
-                left: 23%;
-            }
-
         }
     }
 
     &_caption {
-        height: 20vh;
-        min-width: 50%;
-        position: absolute;
-        top: 35%;
-        left: 25%;
-
+        margin-top: 15vh;
+        .row{
+            height: 20vh !important;
+        }
         &-icon {
             cursor: pointer;
         }
     }
 
     &_time {
-        position: absolute;
-        top: 75%;
-        left: 23%;
-        width: 75%;
         font-weight: bold;
     }
-
-    &_slider {
-        position: absolute;
-        top: 96%;
-        left: 22%;
-        width: 78%;
+    &_range {
+        cursor: pointer;
     }
 }
