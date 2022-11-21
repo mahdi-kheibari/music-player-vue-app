@@ -1,3 +1,4 @@
+// start navbar
 .navbar {
     background-color: $color-primary !important;
 
@@ -5,7 +6,8 @@
         font-size: 1.5rem !important;
     }
 }
-
+// end navbar
+// start currentSong
 .currentSong {
     height: 40vh;
     background: linear-gradient(0deg, rgba(35, 53, 74, 0.7), rgba(35, 53, 74, 0.85)), url(../../static/img/Hope_cover.jpg);
@@ -56,3 +58,33 @@
         cursor: pointer;
     }
 }
+// end currentSong
+// start song List
+.songList {
+    overflow-x: scroll;
+    overflow-y: scroll;
+    height: 31vh !important;
+    &::-webkit-scrollbar {
+        border-radius: 0.3rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-tertiary;
+        border-radius: 0.2rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 0.2rem;
+    }
+    .songItem {
+        color: $color-primary !important;
+        cursor: pointer;
+
+        &_box {
+            height: 28vh !important;
+            width: 8rem !important;
+        }
+    }
+}
+
+// end song List

@@ -32,10 +32,10 @@
         <nuxt-link to="/" class="py-1 pt-2 px-2 mx-3">
           <logo></logo>
         </nuxt-link>
-        <nuxt-link to="/" class="info--text text-decoration-none pa-2"
+        <nuxt-link to="/" exact class="text-decoration-none pa-2 nav-link"
           >All songs</nuxt-link
         >
-        <nuxt-link to="/" class="info--text text-decoration-none pa-2"
+        <nuxt-link to="/favorite" exact class="text-decoration-none pa-2 nav-link"
           >Favorite songs</nuxt-link
         >
       </div>

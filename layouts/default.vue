@@ -3,11 +3,13 @@
     <app-header></app-header>
     <v-main>
         <current-song></current-song>
+        <SongList></SongList>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import SongList from '@/components/songlist/SongList.vue'
 export default {
   name: 'DefaultLayout',
   data() {
@@ -15,5 +17,8 @@ export default {
 
     }
   },
+  components:{
+    SongList
+  }
 }
 </script>

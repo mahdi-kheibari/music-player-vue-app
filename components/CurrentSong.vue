@@ -3,14 +3,14 @@
     <v-row no-gutters>
       <v-col cols="5" lg="3" class="pa-0 d-flex justify-end">
         <v-card class="currentSong_box">
-          <div class="currentSong_box-img mx-auto rounded-sm">
-            <v-img src="/img/Hope_cover.jpg" class="rounded-sm">
+          <div class="currentSong_box-img mx-auto rounded">
+            <v-img src="/img/Hope_cover.jpg" class="rounded">
               <v-icon size="5rem" class="currentSong_box-icon" color="primary"
                 >play_arrow</v-icon
               >
             </v-img>
           </div>
-          <v-card-title class="primary--text"> Current Song name </v-card-title>
+          <v-card-title class="primary--text font-weight-bold"> Current Song name </v-card-title>
           <v-card-text>
               <div class="d-flex justify-space-between align-center">
                 <span class="pr-4 pb-4 primary--text font-16"> Singer </span>
