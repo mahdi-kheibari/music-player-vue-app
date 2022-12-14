@@ -16,6 +16,8 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
+    "swiper": "^6.8.4",
+    "swiper-vue2": "^1.0.10",
     "uuid": "^9.0.0",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",

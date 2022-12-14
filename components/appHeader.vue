@@ -10,14 +10,28 @@
       <v-list nav>
         <v-list-item-group class="info--text">
           <v-list-item>
-            <logo></logo>
+            <nuxt-link to="/">
+              <logo></logo>
+            </nuxt-link>
           </v-list-item>
           <v-list-item class="info--text">
-            <v-list-item-title>All songs</v-list-item-title>
+            <v-list-item-title>
+              <nuxt-link to="/" exact class="text-decoration-none nav-link">
+                All songs
+              </nuxt-link>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item class="info--text">
-            <v-list-item-title>Favorite songs</v-list-item-title>
+            <v-list-item-title>
+              <nuxt-link
+                to="/favorite"
+                exact
+                class="text-decoration-none nav-link"
+              >
+                Favorite songs
+              </nuxt-link>
+            </v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -35,7 +49,10 @@
         <nuxt-link to="/" exact class="text-decoration-none pa-2 nav-link"
           >All songs</nuxt-link
         >
-        <nuxt-link to="/favorite" exact class="text-decoration-none pa-2 nav-link"
+        <nuxt-link
+          to="/favorite"
+          exact
+          class="text-decoration-none pa-2 nav-link"
           >Favorite songs</nuxt-link
         >
       </div>
@@ -48,9 +65,6 @@ export default {
     return {
       drawer: false,
     }
-  },
-  mounted() {
-    console.log(!this.$vuetify.breakpoint.mobile)
   },
 }
 </script>

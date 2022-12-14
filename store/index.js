@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 export const state = () => ({
+    windowWidth:'',
     AllMusicList: [
         {
             name: "Hope",
@@ -69,8 +70,13 @@ export const state = () => ({
 export const getters = {
     getAllMusicList(state) {
         return state.AllMusicList;
+    },
+    getWidth(state){
+        return state.windowWidth;
     }
 };
 export const mutations = {
-
+    changeWidth(state,newWidth){
+        state.windowWidth=newWidth;
+    },
 }

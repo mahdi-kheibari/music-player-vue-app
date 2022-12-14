@@ -1,9 +1,13 @@
-.nav-link{
+.nav-link {
     color: rgba(255, 255, 255, 0.8) !important;
 }
-.nav-link:hover,.nav-link:focus,.nuxt-link-exact-active{
+
+.nav-link:hover,
+.nav-link:focus,
+.nuxt-link-exact-active {
     color: #fff !important;
 }
+
 .visualizer {
 
     &_icon,
@@ -23,6 +27,7 @@
         height: 0.8rem;
     }
 }
+
 .currentSong_box-img,
 .songItem_box-img {
     width: 90%;
@@ -32,7 +37,7 @@
 .currentSong_box,
 .songItem_box {
     background-color: $color-secondary !important;
-    border: 1px solid rgba(0,0,0,.125) !important;
+    border: 1px solid rgba(0, 0, 0, .125) !important;
 }
 
 .currentSong,
@@ -88,5 +93,30 @@
                 width: 2%;
             }
         }
+    }
+}
+
+.songListMobile {
+    margin-top: 2.5rem;
+
+    @media (min-width:600px) {
+        margin-top: 29vh !important;
+    }
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    color: $color-primary !important;
+    z-index: 2;
+}
+
+.swiper-button-next:after {
+    margin-left: 1.5rem;
+}
+
+.swiper-button-prev:after {
+    margin-right: 1.5rem;
+
+    @media (min-width:600px) {
+        display: none;
     }
 }

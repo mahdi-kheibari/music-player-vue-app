@@ -1,3 +1,12 @@
+// vuetify breakpoint 
+@import '~vuetify/src/styles/styles.sass';
+$grid-breakpoints: map-merge($grid-breakpoints, ('xs': 0,
+        'sm': 576px,
+        'md': 768px,
+        'lg': 992px,
+        'xl': 1200px));
+
+// base styles
 $color-primary:#00c79f;
 $color-secondary:#fafafa;
 $color-tertiary:rgba(35, 53, 74, 0.7);
@@ -8,6 +17,7 @@ $color-tertiary:rgba(35, 53, 74, 0.7);
     font-weight: 400;
     src: url('../fonts/MaterialIcons.woff2') format('woff2');
 }
+
 // global classes
 .material-icons {
     font-family: 'Material Icons' !important;
@@ -24,6 +34,7 @@ $color-tertiary:rgba(35, 53, 74, 0.7);
     -moz-font-feature-setting: 'liga';
     -moz-osx-font-smoothing: grayscale;
 }
+
 $fonts: (12: .75rem,
     14: .875rem,
     16: 1rem,
@@ -38,6 +49,7 @@ $rem in $fonts {
         font-size: $rem !important;
     }
 }
+
 .w-100 {
     width: 100% !important;
 }

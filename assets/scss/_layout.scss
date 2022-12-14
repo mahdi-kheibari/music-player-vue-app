@@ -11,12 +11,6 @@
 // start currentSong
 .currentSong {
     height: 40vh;
-    background: linear-gradient(0deg, rgba(35, 53, 74, 0.7), rgba(35, 53, 74, 0.85)), url(../../static/img/Hope_cover.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0px 50%;
-    background-attachment: fixed;
-    position: relative;
     color: $color-primary !important;
 
     &_box {
@@ -30,7 +24,7 @@
 
         &-icon {
             position: absolute;
-            top: 29%;
+            top: 35%;
             left: 39%;
             cursor: pointer;
 
@@ -66,6 +60,57 @@
 }
 
 // end currentSong
+// start current Song Mobile
+.currentSongMobile {
+    min-height: 92.3vh;
+
+    &_box {
+        width: 85%;
+        margin-top: 15vh;
+
+        @media (max-width:600px) {
+            margin-top: 8vh;
+            width: 90%;
+        }
+
+        margin-left: 1rem !important;
+
+        &-img {
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+
+            &-icon {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                z-index: 2;
+                top: 35%;
+            }
+        }
+    }
+
+    &_range {
+        width: 100%;
+        position: absolute;
+        cursor: pointer;
+        left: -0.2%;
+        top: 96.3%;
+
+        .progress {
+            border-bottom-left-radius: 8.5px !important;
+        }
+
+        input {
+            border-bottom-left-radius: 8.5px !important;
+        }
+    }
+}
+
+// end current Song Mobile
 // start song List
 .songList {
     overflow-x: scroll;
@@ -95,5 +140,6 @@
         }
     }
 }
+
 
 // end song List
