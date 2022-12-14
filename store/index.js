@@ -71,7 +71,8 @@ export const state = () => ({
         id: "",
         cover: "",
         address: ""
-    }
+    },
+    songHandler:false
 
 });
 export const getters = {
@@ -83,6 +84,9 @@ export const getters = {
     },
     getCurrentSong(state){
         return state.currentSong;
+    },
+    getSongHandler(state){
+        return state.songHandler;
     }
 };
 export const mutations = {
@@ -91,5 +95,8 @@ export const mutations = {
     },
     changeCurrentSong(state, current){
         state.currentSong=current
+    },
+    changeSongHndler(state,newVal){
+        state.songHandler=newVal;
     }
 }
