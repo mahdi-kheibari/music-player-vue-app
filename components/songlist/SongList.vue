@@ -8,6 +8,7 @@
           :name="item.name"
           :singer="item.singer"
           :cover="item.cover"
+          :id="item.id"
         ></SongListItem>
       </div>
     </v-col>

@@ -175,6 +175,7 @@
                 :name="item.name"
                 :singer="item.singer"
                 :cover="item.cover"
+                :id="item.id"
               ></SongListItem>
             </SwiperSlide>
           </SongSwiper>
@@ -184,6 +185,7 @@
                 :name="item.name"
                 :singer="item.singer"
                 :cover="item.cover"
+                :id="item.id"
               ></SongListItem>
             </SwiperSlide>
           </SongSwiperSm>

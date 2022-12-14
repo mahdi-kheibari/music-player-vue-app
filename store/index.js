@@ -68,7 +68,7 @@ export const state = () => ({
     currentSong: {
         name: "",
         singer: "",
-        id: 0,
+        id: "",
         cover: "",
         address: ""
     }

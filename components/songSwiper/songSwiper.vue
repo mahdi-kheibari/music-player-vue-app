@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       swiperOptions: {
-        slidesPerView:1.5,
-        spaceBetween:30,
+        slidesPerView: 1.5,
+        spaceBetween: 30,
         freeMode: true,
         scrollbar: true,
         navigation: {
@@ -39,11 +39,8 @@ export default {
   },
 }
 </script>
-<style scoped>
-.grabCursor{
-    cursor: grab !important;
-}
-.swiper-wrapper {
-    align-items: center;
+<style lang="scss" scoped>
+.grabCursor {
+  cursor: grab;
 }
 </style>

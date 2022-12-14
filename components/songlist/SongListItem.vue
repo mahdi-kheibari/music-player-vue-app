@@ -1,5 +1,5 @@
 <template>
-  <div class="songItem mx-3 mb-1">
+  <div class="songItem mx-3 mb-1" @click="changeCurrent(id)">
     <v-card class="songItem_box" elevation="0">
       <div class="songItem_box-img mx-auto rounded">
         <v-img :src="cover" class="rounded"></v-img>
@@ -12,7 +12,18 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-    props:{name:String,cover:String,singer:String}
+    props:{name:String,cover:String,singer:String,id:String},
+    methods: {
+        changeCurrent(id){
+            const current=this.getAllMusicList.filter((item)=>item.id==id)
+            this.$store.commit('changeCurrentSong',...current)
+        }
+    },
+    computed: {
+    ...mapGetters(['getAllMusicList']),
+  },
 }
 </script>
