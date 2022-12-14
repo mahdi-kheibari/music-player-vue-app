@@ -200,6 +200,7 @@ import { SwiperSlide } from 'swiper-vue2'
 import SongSwiper from './songSwiper/songSwiper.vue'
 import SongSwiperSm from './songSwiper/songSwiperSm.vue'
 export default {
+  props: { current: Object },
   computed: {
     ...mapGetters(['getWidth']),
     ...mapGetters(['getAllMusicList']),

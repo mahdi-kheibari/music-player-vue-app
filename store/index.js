@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 export const state = () => ({
-    windowWidth:'',
+    windowWidth: '',
     AllMusicList: [
         {
             name: "Hope",
@@ -65,18 +65,31 @@ export const state = () => ({
             address: "https://dl.songsara.net/FRE/2021/7/Hello%20Hello%20(Playlist)/01%20Hey.mp3"
         }
     ],
+    currentSong: {
+        name: "",
+        singer: "",
+        id: 0,
+        cover: "",
+        address: ""
+    }
 
 });
 export const getters = {
     getAllMusicList(state) {
         return state.AllMusicList;
     },
-    getWidth(state){
+    getWidth(state) {
         return state.windowWidth;
+    },
+    getCurrentSong(state){
+        return state.currentSong;
     }
 };
 export const mutations = {
-    changeWidth(state,newWidth){
-        state.windowWidth=newWidth;
+    changeWidth(state, newWidth) {
+        state.windowWidth = newWidth;
     },
+    changeCurrentSong(state, current){
+        state.currentSong=current
+    }
 }
