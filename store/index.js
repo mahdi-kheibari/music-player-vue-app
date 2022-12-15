@@ -72,7 +72,7 @@ export const state = () => ({
         cover: "",
         address: ""
     },
-    songHandler:false
+    songHandler: false
 
 });
 export const getters = {
@@ -82,10 +82,10 @@ export const getters = {
     getWidth(state) {
         return state.windowWidth;
     },
-    getCurrentSong(state){
+    getCurrentSong(state) {
         return state.currentSong;
     },
-    getSongHandler(state){
+    getSongHandler(state) {
         return state.songHandler;
     }
 };
@@ -93,10 +93,29 @@ export const mutations = {
     changeWidth(state, newWidth) {
         state.windowWidth = newWidth;
     },
-    changeCurrentSong(state, current){
-        state.currentSong=current
+    changeCurrentSong(state, current) {
+        state.currentSong = current
     },
-    changeSongHndler(state,newVal){
-        state.songHandler=newVal;
+    changeSongHndler(state, newVal) {
+        state.songHandler = newVal;
+    }
+}
+export const actions = {
+    goNext(context, songList) {
+        console.log(context);
+        const index = songList.findIndex((item) => item.id === context.state.currentSong.id)
+        if (index === songList.length - 1) {
+            context.commit('changeCurrentSong', songList[0])
+        } else {
+            context.commit('changeCurrentSong', songList[index + 1])
+        }
+    },
+    goBack(context, songList) {
+        const index = songList.findIndex((item) => item.id === context.state.currentSong.id)
+        if (index === 0) {
+            context.commit('changeCurrentSong', songList[songList.length - 1])
+        } else {
+            context.commit('changeCurrentSong', songList[index - 1])
+        }
     }
 }

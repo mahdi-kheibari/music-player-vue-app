@@ -4,14 +4,14 @@
       v-show="getWidth > 778"
       class="currentSong"
       :style="{
-        backgroundImage: `linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${current.cover})`,
+        backgroundImage: `linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${getCurrentSong.cover})`,
       }"
     >
       <v-row no-gutters>
         <v-col cols="5" lg="3" class="pa-0 d-flex justify-end">
           <v-card class="currentSong_box">
             <div class="currentSong_box-img mx-auto rounded">
-              <v-img :src="current.cover" class="rounded">
+              <v-img :src="getCurrentSong.cover" class="rounded">
                 <v-icon
                   size="5rem"
                   class="currentSong_box-icon"
@@ -22,12 +22,12 @@
               </v-img>
             </div>
             <v-card-title class="primary--text font-weight-bold">
-              {{ current.name }}
+              {{ getCurrentSong.name }}
             </v-card-title>
             <v-card-text>
               <div class="d-flex justify-space-between align-center">
                 <span class="pr-4 pb-4 primary--text font-16">
-                  {{ current.singer }}
+                  {{ getCurrentSong.singer }}
                 </span>
                 <div class="visualizer d-flex align-baseline">
                   <div class="visualizer_icon"></div>
@@ -44,8 +44,10 @@
               <div class="currentSong_caption">
                 <v-row class="justify-space-between w-100 align-center">
                   <v-col cols="6" class="ml-3">
-                    <h2 className="font-weight-bold">{{ current.name }}</h2>
-                    <h4>{{ current.singer }}</h4>
+                    <h2 className="font-weight-bold">
+                      {{ getCurrentSong.name }}
+                    </h2>
+                    <h4>{{ getCurrentSong.singer }}</h4>
                   </v-col>
                   <v-col
                     cols="5"
@@ -56,6 +58,7 @@
                         size="2.5rem"
                         color="primary"
                         class="currentSong_caption-icon"
+                        @click="goBack(getAllMusicList)"
                         >skip_previous</v-icon
                       >
                       <v-icon
@@ -71,6 +74,7 @@
                         size="2.5rem"
                         color="primary"
                         class="currentSong_caption-icon"
+                        @click="goNext(getAllMusicList)"
                         >skip_next</v-icon
                       >
                     </div>
@@ -105,7 +109,7 @@
       class="currentSongMobile"
       v-show="getWidth <= 778"
       :style="{
-        backgroundImage: `linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${current.cover})`,
+        backgroundImage: `linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${getCurrentSong.cover})`,
       }"
     >
       <v-row no-gutters>
@@ -117,7 +121,7 @@
             >
               <v-img
                 class="currentSongMobile_box-img-shadow mx-auto rounded"
-                :src="current.cover"
+                :src="getCurrentSong.cover"
                 ref="imgRef"
               >
               </v-img>
@@ -126,6 +130,7 @@
                   :size="getWidth <= 580 ? '3.5rem' : '4rem'"
                   color="primary"
                   class="ma-2 currentSong_caption-icon"
+                  @click="goBack(getAllMusicList)"
                   >skip_previous</v-icon
                 >
                 <v-icon
@@ -139,13 +144,14 @@
                   :size="getWidth <= 580 ? '3.5rem' : '4rem'"
                   color="primary"
                   class="ml-2 currentSong_caption-icon"
+                  @click="goNext(getAllMusicList)"
                   >skip_next</v-icon
                 >
               </div>
             </div>
             <v-card-title class="d-flex justify-space-between">
               <div class="font-weight-bold primary--text">
-                {{ current.name }}
+                {{ getCurrentSong.name }}
               </div>
               <v-icon
                 size="2rem"
@@ -156,7 +162,7 @@
             </v-card-title>
             <v-card-text class="d-flex justify-space-between align-center pb-0">
               <span class="pr-4 pb-4 primary--text">
-                {{ current.singer }}
+                {{ getCurrentSong.singer }}
               </span>
               <div class="visualizer d-flex align-baseline">
                 <div class="visualizer_icon"></div>
@@ -206,22 +212,27 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import SongListItem from './songlist/SongListItem'
 import { SwiperSlide } from 'swiper-vue2'
 import SongSwiper from './songSwiper/songSwiper.vue'
 import SongSwiperSm from './songSwiper/songSwiperSm.vue'
 export default {
-  props: { current: Object },
   computed: {
-    ...mapGetters(['getWidth','getAllMusicList','getSongHandler']),
+    ...mapGetters([
+      'getWidth',
+      'getAllMusicList',
+      'getSongHandler',
+      'getCurrentSong',
+    ]),
   },
   components: { SongListItem, SwiperSlide, SongSwiper, SongSwiperSm },
-  methods:{
-    changeSongHndler(newVal){
-        this.$store.commit('changeSongHndler',newVal)
-    }
-  }
+  methods: {
+    changeSongHndler(newVal) {
+      this.$store.commit('changeSongHndler', newVal)
+    },
+    ...mapActions(['goNext','goBack'])
+  },
 }
 </script>
 <style lang="scss" scoped>
