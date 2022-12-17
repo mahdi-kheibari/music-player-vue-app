@@ -72,7 +72,9 @@ export const state = () => ({
         cover: "",
         address: ""
     },
-    songHandler: false
+    songHandler: false,
+    currentTime: 0,
+    fullTime: 0
 
 });
 export const getters = {
@@ -87,7 +89,13 @@ export const getters = {
     },
     getSongHandler(state) {
         return state.songHandler;
-    }
+    },
+    getCurrentTime(state) {
+        return state.currentTime;
+    },
+    getFullTime(state) {
+        return state.fullTime;
+    },
 };
 export const mutations = {
     changeWidth(state, newWidth) {
@@ -98,11 +106,16 @@ export const mutations = {
     },
     changeSongHndler(state, newVal) {
         state.songHandler = newVal;
+    },
+    changeCurrentTime(state, newTime) {
+        state.currentTime = newTime
+    },
+    changeFullTime(state, fullTime) {
+        state.fullTime = fullTime;
     }
 }
 export const actions = {
     goNext(context, songList) {
-        console.log(context);
         const index = songList.findIndex((item) => item.id === context.state.currentSong.id)
         if (index === songList.length - 1) {
             context.commit('changeCurrentSong', songList[0])

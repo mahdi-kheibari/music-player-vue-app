@@ -90,13 +90,23 @@
             </v-col>
             <v-col cols="12">
               <div class="currentSong_time d-flex justify-space-between mt-4">
-                <span class="ml-2">0:00</span>
-                <span class="mr-2">3:00</span>
+                <span class="ml-2">{{ time(getCurrentTime) }}</span>
+                <span class="mr-2">{{ time(getFullTime) }}</span>
               </div>
               <div class="currentSong_range">
                 <div class="currentSong_range-slider py-1">
-                  <div class="progress" style="width: 100%"></div>
-                  <input type="range" />
+                  <div
+                    class="progress"
+                    :style="{
+                      width: (getCurrentTime / getFullTime) * 100 + '%',
+                    }"
+                  ></div>
+                  <input
+                    type="range"
+                    min="0"
+                    :max="getFullTime"
+                    :value="getCurrentTime"
+                  />
                 </div>
               </div>
             </v-col>
@@ -173,13 +183,21 @@
             <div
               class="currentSongMobile_time d-flex justify-space-between font-weight-bold primary--text pb-4"
             >
-              <span class="ml-2">0:00</span>
-              <span class="mr-2">3:00</span>
+              <span class="ml-2">{{ time(getCurrentTime) }}</span>
+              <span class="mr-2">{{ time(getFullTime) }}</span>
             </div>
             <div class="currentSongMobile_range">
               <div class="currentSongMobile_range-slider py-1">
-                <div class="progress" style="width: 100%"></div>
-                <input type="range" />
+                <div
+                  class="progress"
+                  :style="{ width: (getCurrentTime / getFullTime) * 100 + '%' }"
+                ></div>
+                <input
+                  type="range"
+                  min="0"
+                  :max="getFullTime"
+                  :value="getCurrentTime"
+                />
               </div>
             </div>
           </v-card>
@@ -224,14 +242,19 @@ export default {
       'getAllMusicList',
       'getSongHandler',
       'getCurrentSong',
+      'getCurrentTime',
+      'getFullTime',
     ]),
   },
   components: { SongListItem, SwiperSlide, SongSwiper, SongSwiperSm },
   methods: {
+    ...mapActions(['goNext', 'goBack']),
     changeSongHndler(newVal) {
       this.$store.commit('changeSongHndler', newVal)
     },
-    ...mapActions(['goNext','goBack'])
+    time(t) {
+      return Math.floor(t / 60) + ':' + ('0' + Math.floor(t % 60)).slice(-2)
+    },
   },
 }
 </script>
