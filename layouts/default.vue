@@ -16,6 +16,11 @@
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'DefaultLayout',
+  created() {
+    this.$nuxt.$on('changeRange', (currentTime) => {
+      this.$refs.audioRef.currentTime = currentTime
+    })
+  },
   mounted() {
     console.log(this.$vuetify.breakpoint)
     this.$store.commit('changeWidth', window.innerWidth)
@@ -25,8 +30,18 @@ export default {
       })
     })
   },
+  data() {
+    return {
+      currentDuration: 0,
+    }
+  },
   computed: {
-    ...mapGetters(['getCurrentSong', 'getSongHandler', 'getAllMusicList']),
+    ...mapGetters([
+      'getCurrentSong',
+      'getSongHandler',
+      'getAllMusicList',
+      'getFullTime',
+    ]),
     forWatchSongHandler() {
       return `${this.getSongHandler}|${JSON.stringify(this.getCurrentSong)}`
     },
@@ -70,8 +85,12 @@ export default {
       deep: true,
     },
     getCurrentSong() {
-      setTimeout(async () => {
-        await this.changeFullTime(this.$refs.audioRef.duration)
+      const duration = setInterval(async () => {
+        const currentDuration = await this.$refs.audioRef.duration
+        this.changeFullTime(currentDuration)
+        if (this.getFullTime !== 0 && currentDuration !== undefined) {
+          clearInterval(duration)
+        }
       }, 1000)
     },
   },

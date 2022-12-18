@@ -106,6 +106,7 @@
                     min="0"
                     :max="getFullTime"
                     :value="getCurrentTime"
+                    @change="(e) => $nuxt.$emit('changeRange', e.target.value)"
                   />
                 </div>
               </div>
@@ -197,6 +198,7 @@
                   min="0"
                   :max="getFullTime"
                   :value="getCurrentTime"
+                  @change="(e) => $nuxt.$emit('changeRange', e.target.value)"
                 />
               </div>
             </div>
