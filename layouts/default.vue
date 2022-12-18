@@ -5,7 +5,7 @@
       <audio
         :src="getCurrentSong.address"
         ref="audioRef"
-        @ended="goNext(getAllMusicList)"
+        @ended="endedSong()"
       ></audio>
       <nuxt />
     </v-main>
@@ -30,11 +30,6 @@ export default {
       })
     })
   },
-  data() {
-    return {
-      currentDuration: 0,
-    }
-  },
   computed: {
     ...mapGetters([
       'getCurrentSong',
@@ -48,7 +43,17 @@ export default {
   },
   methods: {
     ...mapActions(['goNext']),
-    ...mapMutations(['changeCurrentTime', 'changeFullTime']),
+    ...mapMutations([
+      'changeCurrentTime',
+      'changeFullTime',
+      'changeSongHndler',
+    ]),
+    async endedSong() {
+      await this.changeSongHndler(false)
+      this.goNext(this.getAllMusicList)
+      await this.$refs.audioRef.load();
+      this.changeSongHndler(true)
+    },
   },
   watch: {
     forWatchSongHandler: {
