@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 export const state = () => ({
     windowWidth: '',
-    AllMusicList: [
+    AllSongList: [
         {
             name: "Hope",
             singer: "Mark Eliyahu",
@@ -78,8 +78,8 @@ export const state = () => ({
 
 });
 export const getters = {
-    getAllMusicList(state) {
-        return state.AllMusicList;
+    getAllSongList(state) {
+        return state.AllSongList;
     },
     getWidth(state) {
         return state.windowWidth;
@@ -114,11 +114,29 @@ export const mutations = {
         state.fullTime = fullTime;
     },
     changeFav(state) {
-        if (state.currentSong.favorite !== undefined) {
-            state.currentSong = { ...state.currentSong, favorite: !state.currentSong.favorite }
-        } else {
-            state.currentSong = { ...state.currentSong, favorite: true }
-        }
+        state.AllSongList = state.AllSongList.map((item) => {
+            if (item.id === state.currentSong.id) {
+                if (item.favorite !== undefined) {
+                    const newCurrent = {
+                        ...item,
+                        favorite: !item.favorite
+                    }
+                    state.currentSong = newCurrent
+                    return newCurrent
+                } else {
+                    const newCurrent = {
+                        ...item,
+                        favorite: true
+                    }
+                    state.currentSong = newCurrent
+                    return newCurrent
+                }
+            } else {
+                return {
+                    ...item
+                }
+            }
+        })
     }
 }
 export const actions = {

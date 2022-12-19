@@ -18,12 +18,12 @@ export default {
     props:{name:String,cover:String,singer:String,id:String},
     methods: {
         changeCurrent(id){
-            const current=this.getAllMusicList.filter((item)=>item.id==id)
+            const current=this.getAllSongList.filter((item)=>item.id==id)
             this.$store.commit('changeCurrentSong',...current)
         }
     },
     computed: {
-    ...mapGetters(['getAllMusicList']),
+    ...mapGetters(['getAllSongList']),
   },
 }
 </script>

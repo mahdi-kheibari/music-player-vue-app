@@ -3,7 +3,7 @@
     <v-col cols="7" lg="9" offset="5" offset-lg="3">
       <div class="songList mt-2 ml-2 d-flex">
         <SongListItem
-          v-for="item in getAllMusicList"
+          v-for="item in favorite ? favList : getAllSongList"
           :key="item.id"
           :name="item.name"
           :singer="item.singer"
@@ -18,8 +18,9 @@
 import SongListItem from '@/components/songlist/SongListItem'
 import { mapGetters } from 'vuex'
 export default {
+  props: { favorite: Boolean, favList: Array },
   computed: {
-    ...mapGetters(['getAllMusicList']),
+    ...mapGetters(['getAllSongList']),
   },
   components: {
     SongListItem,

@@ -34,7 +34,7 @@ export default {
     ...mapGetters([
       'getCurrentSong',
       'getSongHandler',
-      'getAllMusicList',
+      'getAllSongList',
       'getFullTime',
     ]),
     forWatchSongHandler() {
@@ -50,7 +50,7 @@ export default {
     ]),
     async endedSong() {
       await this.changeSongHndler(false)
-      this.goNext(this.getAllMusicList)
+      this.goNext(this.getAllSongList)
       await this.$refs.audioRef.load();
       this.changeSongHndler(true)
     },

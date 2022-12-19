@@ -1,6 +1,6 @@
 <template>
   <div>
-    <current-song :current="getCurrentSong"></current-song>
+    <current-song></current-song>
     <song-list v-if="getWidth > 778"></song-list>
   </div>
 </template>
@@ -11,7 +11,7 @@ import CurrentSong from '../components/CurrentSong.vue'
 import SongList from '../components/songlist/SongList.vue'
 export default {
   created() {
-    const current = this.$store.state.AllMusicList[0]
+    const current = this.$store.state.AllSongList[0]
     this.$store.commit('changeCurrentSong', current)
   },
   components: {
