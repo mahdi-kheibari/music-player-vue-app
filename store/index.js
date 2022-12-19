@@ -112,6 +112,13 @@ export const mutations = {
     },
     changeFullTime(state, fullTime) {
         state.fullTime = fullTime;
+    },
+    changeFav(state) {
+        if (state.currentSong.favorite !== undefined) {
+            state.currentSong = { ...state.currentSong, favorite: !state.currentSong.favorite }
+        } else {
+            state.currentSong = { ...state.currentSong, favorite: true }
+        }
     }
 }
 export const actions = {

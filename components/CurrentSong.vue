@@ -82,7 +82,8 @@
                       size="2.25rem"
                       color="primary"
                       class="currentSong_caption-icon"
-                      >favorite</v-icon
+                      @click="changeFav()"
+                      >{{getCurrentSong.favorite ? 'favorite' : 'favorite_outline'}}</v-icon
                     >
                   </v-col>
                 </v-row>
@@ -168,7 +169,10 @@
                 size="2rem"
                 color="primary"
                 class="currentSong_caption-icon"
-                >favorite</v-icon
+                @click="changeFav()"
+                >{{
+                  getCurrentSong.favorite ? 'favorite' : 'favorite_outline'
+                }}</v-icon
               >
             </v-card-title>
             <v-card-text class="d-flex justify-space-between align-center pb-0">
@@ -232,7 +236,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import SongListItem from './songlist/SongListItem'
 import { SwiperSlide } from 'swiper-vue2'
 import SongSwiper from './songSwiper/songSwiper.vue'
@@ -251,6 +255,7 @@ export default {
   components: { SongListItem, SwiperSlide, SongSwiper, SongSwiperSm },
   methods: {
     ...mapActions(['goNext', 'goBack']),
+    ...mapMutations(['changeFav']),
     changeSongHndler(newVal) {
       this.$store.commit('changeSongHndler', newVal)
     },
