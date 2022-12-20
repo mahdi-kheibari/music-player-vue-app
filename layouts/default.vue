@@ -49,10 +49,14 @@ export default {
       'changeSongHandler',
     ]),
     async endedSong() {
+      const route = this.$nuxt.$route.name
       await this.changeSongHandler(false)
-      this.goNext(this.getAllSongList)
-      await this.$refs.audioRef.load();
+      route == 'favorite'
+        ? this.$nuxt.$emit('endedSongFav')
+        : this.goNext(this.getAllSongList)
+      await this.$refs.audioRef.load()
       this.changeSongHandler(true)
+      route == 'favorite' ? this.$nuxt.$emit('changeHandlerFav') : null
     },
   },
   watch: {

@@ -16,7 +16,11 @@
                   size="5rem"
                   class="currentSong_box-icon"
                   color="primary"
-                  @click="differentCurrent?changeHandlersAndCurrent():changeHandlers()"
+                  @click="
+                    differentCurrent
+                      ? changeHandlersAndCurrent()
+                      : changeHandlers()
+                  "
                   >{{
                     favorite
                       ? songHandlerFav
@@ -66,14 +70,20 @@
                         size="2.5rem"
                         color="primary"
                         class="currentSong_caption-icon"
-                        @click="goBack(getAllSongList)"
+                        @click="
+                          favorite ? goBack(favList) : goBack(getAllSongList)
+                        "
                         >skip_previous</v-icon
                       >
                       <v-icon
                         size="3rem"
                         color="primary"
                         class="currentSong_caption-icon"
-                        @click="differentCurrent?changeHandlersAndCurrent():changeHandlers()"
+                        @click="
+                          differentCurrent
+                            ? changeHandlersAndCurrent()
+                            : changeHandlers()
+                        "
                         >{{
                           favorite
                             ? songHandlerFav
@@ -88,7 +98,9 @@
                         size="2.5rem"
                         color="primary"
                         class="currentSong_caption-icon"
-                        @click="goNext(getAllSongList)"
+                        @click="
+                          favorite ? goNext(favList) : goNext(getAllSongList)
+                        "
                         >skip_next</v-icon
                       >
                     </div>
@@ -149,9 +161,7 @@
       <v-row no-gutters>
         <v-col cols="11" sm="6" class="p-0 d-flex justify-center ml-1">
           <v-card class="currentSongMobile_box">
-            <div
-              class="currentSongMobile_box-img mx-auto mt-3 rounded"    
-            >
+            <div class="currentSongMobile_box-img mx-auto mt-3 rounded">
               <v-img
                 class="currentSongMobile_box-img-shadow mx-auto rounded"
                 :src="currentSong.cover"
@@ -162,14 +172,18 @@
                   :size="getWidth <= 580 ? '3.5rem' : '4rem'"
                   color="primary"
                   class="ma-2 currentSong_caption-icon"
-                  @click="goBack(getAllSongList)"
+                  @click="favorite ? goBack(favList) : goBack(getAllSongList)"
                   >skip_previous</v-icon
                 >
                 <v-icon
                   :size="getWidth <= 600 ? '4rem' : '4.5rem'"
                   color="primary"
                   class="ma-2 currentSong_caption-icon"
-                  @click="differentCurrent?changeHandlersAndCurrent():changeHandlers()"
+                  @click="
+                    differentCurrent
+                      ? changeHandlersAndCurrent()
+                      : changeHandlers()
+                  "
                   >{{
                     favorite
                       ? songHandlerFav
@@ -184,7 +198,7 @@
                   :size="getWidth <= 580 ? '3.5rem' : '4rem'"
                   color="primary"
                   class="ml-2 currentSong_caption-icon"
-                  @click="goNext(getAllSongList)"
+                  @click="favorite ? goNext(favList) : goNext(getAllSongList)"
                   >skip_next</v-icon
                 >
               </div>
@@ -307,20 +321,20 @@ export default {
   components: { SongListItem, SwiperSlide, SongSwiper, SongSwiperSm },
   methods: {
     ...mapActions(['goNext', 'goBack']),
-    ...mapMutations(['changeFav','changeSongHandler','changeCurrentSong']),
+    ...mapMutations(['changeFav', 'changeSongHandler', 'changeCurrentSong']),
     time(t) {
       return Math.floor(t / 60) + ':' + ('0' + Math.floor(t % 60)).slice(-2)
     },
-    changeHandlersAndCurrent(){
-        this.$emit('update:songHandlerFav',!this.songHandlerFav)
-        this.changeCurrentSong(this.differentCurrent)
+    changeHandlersAndCurrent() {
+      this.$emit('update:songHandlerFav', !this.songHandlerFav)
+      this.changeCurrentSong(this.differentCurrent)
     },
-    changeHandlers(){
-        if (this.$nuxt.$route.name=='favorite') {
-            this.$emit('update:songHandlerFav',!this.songHandlerFav)
-        }
-        this.changeSongHandler(!this.getSongHandler)
-    }
+    changeHandlers() {
+      if (this.$nuxt.$route.name == 'favorite') {
+        this.$emit('update:songHandlerFav', !this.songHandlerFav)
+      }
+      this.changeSongHandler(!this.getSongHandler)
+    },
   },
 }
 </script>

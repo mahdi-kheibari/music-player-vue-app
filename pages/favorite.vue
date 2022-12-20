@@ -30,6 +30,13 @@ export default {
     }
   },
   created() {
+    this.$nuxt.$on('endedSongFav', () =>
+      this.$store.dispatch('goNext', this.favList)
+    )
+    this.$nuxt.$on(
+      'changeHandlerFav',
+      () => (this.songHandler = !this.songHandler)
+    )
     this.setFavList()
     if (this.favList.length !== 0 && this.checkCurrentSong) {
       this.songHandler = this.getSongHandler
@@ -67,7 +74,7 @@ export default {
       if (this.songHandler != this.getSongHandler && newVal) {
         this.songHandler = this.getSongHandler
       }
-    }
+    },
   },
   components: { SongList },
 }
