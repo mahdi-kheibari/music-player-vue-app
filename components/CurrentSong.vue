@@ -123,7 +123,9 @@
                   differentCurrent ? '0:00' : time(getCurrentTime)
                 }}</span>
                 <span class="mr-2">{{
-                  differentCurrent ? time(favCurrentDuration) : time(getFullTime)
+                  differentCurrent
+                    ? time(favCurrentDuration)
+                    : time(getFullTime)
                 }}</span>
               </div>
               <div class="currentSong_range">
@@ -271,6 +273,17 @@
                 :id="item.id"
               ></SongListItem>
             </SwiperSlide>
+            <SwiperSlide
+              v-if="favList ? (favList.length === 1 ? true : false) : false"
+            >
+              <SongListItem
+                :style="{ visibility: 'hidden' }"
+                :name="favList[0].name"
+                :singer="favList[0].singer"
+                :cover="favList[0].cover"
+                :id="favList[0].id"
+              ></SongListItem>
+            </SwiperSlide>
           </SongSwiper>
           <SongSwiperSm v-else>
             <SwiperSlide
@@ -284,6 +297,25 @@
                 :id="item.id"
               ></SongListItem>
             </SwiperSlide>
+            <template
+              v-if="
+                favList
+                  ? favList.length == 1 || favList.length == 2
+                    ? true
+                    : false
+                  : false
+              "
+            >
+              <SwiperSlide v-for="i in 2" :key="i">
+                <SongListItem
+                  :style="{ visibility: 'hidden' }"
+                  :name="favList[0].name"
+                  :singer="favList[0].singer"
+                  :cover="favList[0].cover"
+                  :id="favList[0].id"
+                ></SongListItem>
+              </SwiperSlide>
+            </template>
           </SongSwiperSm>
         </v-col>
       </v-row>
