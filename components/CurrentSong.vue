@@ -16,7 +16,7 @@
                   size="5rem"
                   class="currentSong_box-icon"
                   color="primary"
-                  @click="changeSongHndler(!getSongHandler)"
+                  @click="differentCurrent?changeHandlersAndCurrent():changeHandlers()"
                   >{{
                     favorite
                       ? songHandlerFav
@@ -73,7 +73,7 @@
                         size="3rem"
                         color="primary"
                         class="currentSong_caption-icon"
-                        @click="changeSongHndler(!getSongHandler)"
+                        @click="differentCurrent?changeHandlersAndCurrent():changeHandlers()"
                         >{{
                           favorite
                             ? songHandlerFav
@@ -171,7 +171,7 @@
                   :size="getWidth <= 600 ? '4rem' : '4.5rem'"
                   color="primary"
                   class="ma-2 currentSong_caption-icon"
-                  @click="changeSongHndler(!getSongHandler)"
+                  @click="differentCurrent?changeHandlersAndCurrent():changeHandlers()"
                   >{{
                     favorite
                       ? songHandlerFav
@@ -309,13 +309,20 @@ export default {
   components: { SongListItem, SwiperSlide, SongSwiper, SongSwiperSm },
   methods: {
     ...mapActions(['goNext', 'goBack']),
-    ...mapMutations(['changeFav']),
-    changeSongHndler(newVal) {
-      this.$store.commit('changeSongHndler', newVal)
-    },
+    ...mapMutations(['changeFav','changeSongHandler','changeCurrentSong']),
     time(t) {
       return Math.floor(t / 60) + ':' + ('0' + Math.floor(t % 60)).slice(-2)
     },
+    changeHandlersAndCurrent(){
+        this.$emit('update:songHandlerFav',!this.songHandlerFav)
+        this.changeCurrentSong(this.differentCurrent)
+    },
+    changeHandlers(){
+        if (this.$nuxt.$route.name=='favorite') {
+            this.$emit('update:songHandlerFav',!this.songHandlerFav)
+        }
+        this.changeSongHandler(!this.getSongHandler)
+    }
   },
 }
 </script>

@@ -104,7 +104,7 @@ export const mutations = {
     changeCurrentSong(state, current) {
         state.currentSong = current
     },
-    changeSongHndler(state, newVal) {
+    changeSongHandler(state, newVal) {
         state.songHandler = newVal;
     },
     changeCurrentTime(state, newTime) {

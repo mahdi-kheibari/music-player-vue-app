@@ -11,8 +11,10 @@ import CurrentSong from '../components/CurrentSong.vue'
 import SongList from '../components/songlist/SongList.vue'
 export default {
   created() {
-    const current = this.$store.state.AllSongList[0]
-    this.$store.commit('changeCurrentSong', current)
+    if (this.getCurrentSong.name==='') {
+        const current = this.$store.state.AllSongList[0]
+        this.$store.commit('changeCurrentSong', current)
+    }
   },
   components: {
     CurrentSong,

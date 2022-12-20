@@ -9,7 +9,7 @@
       :favorite="true"
       :favList="favList"
       :songHandlerFav.sync="songHandler"
-      :differentCurrent="checkCurrentSong()?undefined:favList[0]"
+      :differentCurrent="checkCurrentSong?undefined:favList[0]"
     ></current-song>
     <SongList
       v-if="getWidth > 778"
@@ -32,7 +32,7 @@ export default {
   created() {
     this.setFavList()
     if (this.favList.length !== 0) {
-      if (this.checkCurrentSong()) {
+      if (this.checkCurrentSong) {
         this.songHandler = this.getSongHandler
       }
     }
@@ -44,11 +44,11 @@ export default {
       'getSongHandler',
       'getCurrentSong',
     ]),
-  },
-  methods: {
     checkCurrentSong() {
       return this.favList.find((item) => item.id === this.getCurrentSong.id)
     },
+  },
+  methods: {
     setFavList() {
       this.favList = this.getAllSongList.filter((item) => item.favorite)
     },
@@ -60,6 +60,11 @@ export default {
       },
       deep: true,
     },
+    checkCurrentSong(){
+        if (this.songHandler!=this.getSongHandler) {
+            this.songHandler=this.getSongHandler
+        }
+    }
   },
   components: { SongList },
 }

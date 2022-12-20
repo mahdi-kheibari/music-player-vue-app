@@ -46,13 +46,13 @@ export default {
     ...mapMutations([
       'changeCurrentTime',
       'changeFullTime',
-      'changeSongHndler',
+      'changeSongHandler',
     ]),
     async endedSong() {
-      await this.changeSongHndler(false)
+      await this.changeSongHandler(false)
       this.goNext(this.getAllSongList)
       await this.$refs.audioRef.load();
-      this.changeSongHndler(true)
+      this.changeSongHandler(true)
     },
   },
   watch: {
