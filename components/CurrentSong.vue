@@ -150,13 +150,11 @@
         <v-col cols="11" sm="6" class="p-0 d-flex justify-center ml-1">
           <v-card class="currentSongMobile_box">
             <div
-              class="currentSongMobile_box-img mx-auto mt-3 rounded"
-              ref="imgBoxRef"
+              class="currentSongMobile_box-img mx-auto mt-3 rounded"    
             >
               <v-img
                 class="currentSongMobile_box-img-shadow mx-auto rounded"
                 :src="currentSong.cover"
-                ref="imgRef"
               >
               </v-img>
               <div class="currentSongMobile_box-img-icon d-flex align-baseline">
