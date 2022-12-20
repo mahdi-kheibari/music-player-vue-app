@@ -123,7 +123,7 @@
                   differentCurrent ? '0:00' : time(getCurrentTime)
                 }}</span>
                 <span class="mr-2">{{
-                  differentCurrent ? '0:00' : time(getFullTime)
+                  differentCurrent ? time(favCurrentDuration) : time(getFullTime)
                 }}</span>
               </div>
               <div class="currentSong_range">
@@ -234,7 +234,7 @@
                 differentCurrent ? '0:00' : time(getCurrentTime)
               }}</span>
               <span class="mr-2">{{
-                differentCurrent ? '0:00' : time(getFullTime)
+                differentCurrent ? time(favCurrentDuration) : time(getFullTime)
               }}</span>
             </div>
             <div class="currentSongMobile_range">
@@ -303,6 +303,7 @@ export default {
     favList: Array,
     songHandlerFav: Boolean,
     differentCurrent: Object,
+    favCurrentDuration: Number,
   },
   mounted() {},
   computed: {

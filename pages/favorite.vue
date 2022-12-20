@@ -10,6 +10,7 @@
       :favList="favList"
       :songHandlerFav.sync="songHandler"
       :differentCurrent="checkCurrentSong ? undefined : favList[0]"
+      :favCurrentDuration="checkCurrentSong ? undefined : currentDuration"
     ></current-song>
     <SongList
       v-if="getWidth > 778"
@@ -27,6 +28,7 @@ export default {
     return {
       favList: [],
       songHandler: false,
+      currentDuration: 0,
     }
   },
   created() {
@@ -37,9 +39,14 @@ export default {
       'changeHandlerFav',
       () => (this.songHandler = !this.songHandler)
     )
+
     this.setFavList()
     if (this.favList.length !== 0 && this.checkCurrentSong) {
       this.songHandler = this.getSongHandler
+    }
+
+    if (this.checkCurrentSong === undefined && this.favList.length !== 0) {
+      this.fullTimeInterval()
     }
   },
   computed: {
@@ -57,6 +64,17 @@ export default {
     setFavList() {
       this.favList = this.getAllSongList.filter((item) => item.favorite)
     },
+    fullTimeInterval() {
+      const currentAudio = new Audio()
+      currentAudio.src = this.favList[0].address
+      const duration = setInterval(async () => {
+        const currentDuration = await currentAudio.duration
+        this.currentDuration = currentDuration
+        if (this.currentDuration !== 0 && currentDuration !== undefined) {
+          clearInterval(duration)
+        }
+      }, 1000)
+    },
   },
   watch: {
     getAllSongList: {
@@ -73,6 +91,9 @@ export default {
     checkCurrentSong(newVal) {
       if (this.songHandler != this.getSongHandler && newVal) {
         this.songHandler = this.getSongHandler
+      }
+      if (newVal === undefined && this.favList.length !== 0) {
+        this.fullTimeInterval()
       }
     },
   },
