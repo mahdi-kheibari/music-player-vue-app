@@ -103,6 +103,7 @@
         margin-top: 29vh !important;
     }
 }
+
 .swiper-button-next:after,
 .swiper-button-prev:after {
     color: $color-primary !important;
@@ -118,5 +119,13 @@
 
     @media (min-width:600px) {
         display: none;
+    }
+}
+
+.home-btn {
+    transition: background-color 0.25s ease-in !important;
+
+    &:hover {
+        background-color: $color-primary !important;
     }
 }

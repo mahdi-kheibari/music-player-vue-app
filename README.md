@@ -1,5 +1,8 @@
 # music-player-vue
 
+> view project on this link:
+https://mahdi-kheibari.github.io/music-player-vue-app/
+
 ## Build Setup
 
 ```bash
